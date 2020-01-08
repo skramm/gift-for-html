@@ -33,6 +33,7 @@ BEGIN { print "// THIS IS A GENERATED FILE, DO NOT EDIT !" }
 				gsub("{","\\{");
 				gsub("}","\\}");
 				gsub("=","\\=");
+				gsub("#","\\#");
 			}
 			print $0;
 		}

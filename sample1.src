@@ -4,7 +4,7 @@ $CATEGORY:dummy
 ::q0::[html]
 This is a dummy question
 with <code>sel {some: css-code;}</code>
-and some <code><tag attrib1="html" attrib2="code"></tag></code>.
+and some <code><tag attrib1="html#anchor" attrib2="code"></tag></code>.
 Code blocks:
 <pre>
 <a href="aa">text</a>
@@ -12,7 +12,7 @@ sel {some: css-code;}
 </pre>
 do this/that
 {
-=<good attrib\="value">answer</good>
+=<good attrib\="value#true">answer</good>
 ~<a href\="http://here.com#anchor">anchor</a>
 ~really { bad: answer;}
 ~another one
