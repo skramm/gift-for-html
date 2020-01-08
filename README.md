@@ -10,11 +10,11 @@ Pull requests are welcome !
 
 Lots of academics now use the well-known [Moodle](https://en.wikipedia.org/wiki/Moodle) platform to set up quizzes for students.
 An easy way to do this is to import questions in some specific format, instead of editing this online.
-I use the ["gift"](https://docs.moodle.org/38/en/GIFT_format)
+I use the ["Gift"](https://docs.moodle.org/38/en/GIFT_format)
 format.
 However, this file format has some pitfalls when building questions for web-related quizzes:
  * Source code can be formatted with the `<pre>` and `<code>` tags, but all the HTML tags will be parsed as "real" HTML.
- * The GIFT format has some reserved characters, thus entering code such as<br>
+ * The Gift format has some reserved characters, thus entering code such as<br>
 `body { color:gray; }`<br>
 won't work.
 
@@ -36,7 +36,7 @@ instead of this
 ```
 
 This is pretty much a PITA, thus this script:
-just type your questions as regular gift questions, holding standard HTML/CSS code inside `<pre>` and `<code>` tags, and the script will process for you and generate acceptable gift file.
+just type your questions as regular Gift questions, holding standard HTML/CSS code inside `<pre>` and `<code>` tags, and the script will process it for you and generate a conformant Gift file.
 
 ## Usage
 This program will take as input a text file (.src extension, but this can be changed)
@@ -45,7 +45,7 @@ and generate a .gift file, that can be directly imported into Moodle.
 
 Usage:
 ```
-$ ./gift-for-html my_input_file.src
+$ gift-for-html my_input_file.src
 ```
 
 All it does is some text replacement.
@@ -76,13 +76,13 @@ you will need to type this as "answer bloc":
 }
 ```
 
-Related: although the gift specification does not require this, it is mandatory that the answer blocs are identified by a `{` and `}` that are the single characters of the line.
+Related: although the Gift specification does not require this, it is mandatory that the answer blocs identifiers (`{` and `}`) are the single characters of the line.
 
 ## Testing
 
 A sample question is included.
 To make sure to understand what it does, enter:
 ```
-$ ./gift-for-html.sh sample1.src
+$ gift-for-html.sh sample1.src
 ```
 and checkout the produced file `sample1.gift`.
