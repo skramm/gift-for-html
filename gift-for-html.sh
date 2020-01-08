@@ -5,6 +5,7 @@
 # home: https://github.com/skramm/gift-for-html
 
 SOURCE_EXT=src
+LOCATION=/usr/local/bin
 
 if [ "$1" = "" ]
 then
@@ -24,13 +25,13 @@ then
 fi
 
 echo " -Step 1"
-awk -f process_src2gift_1.awk $1 >/tmp/$filename.tmp1
+awk -f $LOCATION/process_src2gift_1.awk $1 >/tmp/$filename.tmp1
 
 echo " -Step 2"
-awk -f process_src2gift_2.awk /tmp/$filename.tmp1 >/tmp/$filename.tmp2
+awk -f $LOCATION/process_src2gift_2.awk /tmp/$filename.tmp1 >/tmp/$filename.tmp2
 
 echo " -Step 3"
-awk -f process_src2gift_3.awk /tmp/$filename.tmp2 >$filename.gift
+awk -f $LOCATION/process_src2gift_3.awk /tmp/$filename.tmp2 >$filename.gift
 
 #rm /tmp/$filename.tmp
 
