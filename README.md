@@ -2,6 +2,9 @@
 
  * author: S. Kramm
  * home: https://github.com/skramm/gift-for-html
+ * licence : GPL v3.0
+
+Pull requests are welcome !
 
 ## Motivation
 
@@ -52,23 +55,28 @@ Should work out of the box on any standard Linux platform.
 
 ## Limitations
 
+### 1 - One pair of inline code tags per line
 This does a "per-line" text replacement (awk based).
 Thus, for inline code, there must be only a single `<code></code>` per line.
 
+### 2 - Gift special characters in answer blocs
 Another (present) limitation is that the gift-special characters `=` and `~` **cannot** be used in answer fields.
 For the latter, it is barely used in HTML/CSS code, but the first one is regularly used.
 
 This is because these 2 characters are used as "good/bad" answers designators.
 
-Thus, if you expect an answer such as:
+Thus, if you expect as (good) answer this:
 ```
 <tag attrib="value">
 ```
-you will need to type this:
+you will need to type this as "answer bloc":
 ```
-<tag attrib\="value">
+{
+=<tag attrib\="value">
+}
 ```
 
+Related: although the gift specification does not require this, it is mandatory that the answer blocs are identified by a `{` and `}` that are the single characters of the line.
 
 ## Testing
 
