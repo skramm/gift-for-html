@@ -9,7 +9,7 @@ Pull requests are welcome !
 ## Motivation
 
 Lots of academics now use the well-known [Moodle](https://en.wikipedia.org/wiki/Moodle) platform to set up quizzes for students.
-An easy way to to this is to import questions in some specific format, instead of editing this online.
+An easy way to do this is to import questions in some specific format, instead of editing this online.
 I use the ["gift"](https://docs.moodle.org/38/en/GIFT_format)
 format.
 However, this file format has some pitfalls when building questions for web-related quizzes:
@@ -45,7 +45,7 @@ and generate a .gift file, that can be directly imported into Moodle.
 
 Usage:
 ```
-$ ./gift-for-html my_input_file
+$ ./gift-for-html my_input_file.src
 ```
 
 All it does is some text replacement.
