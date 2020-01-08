@@ -12,16 +12,14 @@ BEGIN { print "// THIS IS A GENERATED FILE, DO NOT EDIT !" }
 # replace tabs with spaces
 	gsub("\t","     ");
 
-	if( $1=="<pre>" || $1 == "<code>" ) # opening a "code" block
-#	if( /<pre>/ || /<code>/ )
+	if( $1=="<pre>" ) # opening a "code" block
 	{
 		code=1;
 		print $0;
 	}
 	else
 	{
-		if( $1=="</pre>" || $1=="</code>" ) # closing a "code" block
-#		if( $/<\/pre>/ || /<\/code>/ ) # closing a "code" block
+		if( $1=="</pre>" ) # closing a "code" block
 		{
 			code=0;
 			print $0;
@@ -39,7 +37,6 @@ BEGIN { print "// THIS IS A GENERATED FILE, DO NOT EDIT !" }
 			print $0;
 		}
 	}
-
 }
 
 END { print "// END" }

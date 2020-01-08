@@ -1,0 +1,18 @@
+
+$CATEGORY:dummy
+
+::q0::[html]
+This is a dummy question
+with <code>sel {some: css-code;}</code>
+and some <code><tag attrib1="html" attrib2="code"></tag></code>.
+Code blocks:
+<pre>
+<a href="aa">text</a>
+sel {some: css-code;}
+</pre>
+do this/that
+{
+=<good>answer</good>
+~really { bad: answer;}
+~another one
+}
