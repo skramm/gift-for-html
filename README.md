@@ -47,7 +47,7 @@ $ ./gift-for-html my_input_file
 
 All it does is some text replacement.
 
-To install (it is a 3 file script), just clone the repo and run `sudo ./install.sh`.
+To install (4 files), just clone the repo and run `sudo ./install.sh`.
 Should work out of the box on any standard Linux platform.
 
 ## Limitations
@@ -55,11 +55,26 @@ Should work out of the box on any standard Linux platform.
 This does a "per-line" text replacement (awk based).
 Thus, for inline code, there must be only a single `<code></code>` per line.
 
+Another (present) limitation is that the gift-special characters `=` and `~` **cannot** be used in answer fields.
+For the latter, it is barely used in HTML/CSS code, but the first one is regularly used.
+
+This is because these 2 characters are used as "good/bad" answers designators.
+
+Thus, if you expect an answer such as:
+```
+<tag attrib="value">
+```
+you will need to type this:
+```
+<tag attrib\="value">
+```
+
 
 ## Testing
 
 A sample question is included.
-To make sure to understand what it does, enter
+To make sure to understand what it does, enter:
 ```
-$ ./gift-for-html sample1
+$ ./gift-for-html.sh sample1.src
 ```
+and checkout the produced file `sample1.gift`.
