@@ -7,7 +7,7 @@
 # - all "<" by "&lt;"
 # - all ">" by "&gt;"
 
-BEGIN { print "// THIS IS A GENERATED FILE !" }
+BEGIN { print "// THIS IS A GENERATED FILE, DO NOT EDIT !" }
 {
 # replace tabs with spaces
 	gsub("\t","     ");
