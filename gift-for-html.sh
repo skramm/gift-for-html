@@ -4,8 +4,12 @@
 # author: S. Kramm
 # home: https://github.com/skramm/gift-for-html
 
+# here, you can define the source file extension
 SOURCE_EXT=src
+
+# program location
 LOCATION=/usr/local/bin
+
 
 if [ "$1" = "" ]
 then
@@ -18,7 +22,7 @@ filename=$(basename -- "$1")
 extension="${filename##*.}"
 filename="${filename%.*}"
 
-if [ "$extension" != "src" ]
+if [ "$extension" != "$SOURCE_EXT" ]
 then
 	echo "Wrong input file, please give me a \".$SOURCE_EXT\" file, exit !"
 	exit
