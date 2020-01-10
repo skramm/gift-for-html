@@ -13,30 +13,38 @@ An easy way to do this is to import questions in some specific format, instead o
 I use the ["Gift"](https://docs.moodle.org/38/en/GIFT_format)
 format.
 However, this file format has some pitfalls when building questions for web-related quizzes:
- * Source code can be formatted with the `<pre>` and `<code>` tags, but all the HTML tags will be parsed as "real" HTML.
- * The Gift format has some reserved characters, thus entering code such as<br>
+ * Source code can be formatted with the `<pre>` and `<code>` tags, but all the HTML tags will be understood at upload as "real" HTML, thus the tags will be removed.
+ * The Gift format has some reserved characters: entering code such as<br>
 `body { color:gray; }`<br>
 won't work.
 
 Thus, when authoring questions, you would be required to write this:
 ```
+<pre>
 body \{ color:gray; \}
+</pre>
 ```
 instead of:
 ```
+<pre>
 body { color:gray; }
+</pre>
 ```
 and this:
 ```
+<pre>
 &lt;a href\="p.html"&gt;text&lt;/a&gt;
+</pre>
 ```
 instead of this
 ```
+<pre>
 <a href="p.html">text</a>
+</pre>
 ```
 
 This is pretty much a PITA, thus this script:
-just type your questions as regular Gift questions, holding standard HTML/CSS code inside `<pre>` and `<code>` tags, and the script will process it for you and generate a conformant Gift file.
+just type your questions as regular Gift questions, holding standard HTML/CSS code inside `<pre>` and `<code>` tags, this script will process it for you and generate a conformant Gift file.
 
 ## Usage
 This program will take as input a text file (.src extension, but this can be changed)
@@ -51,16 +59,17 @@ $ gift-for-html my_input_file.src
 All it does is some text replacement.
 
 To install (4 files), just clone the repo and run `sudo ./install.sh`.
-Should work out of the box on any standard Linux platform.
+Should work out of the box on any standard Linux platform (requires Bash and Awk only).
 
 ## Limitations
 
-### 1 - One pair of inline code tags per line
-This does a "per-line" text replacement (awk based).
-Thus, for inline code, there must be only a single `<code></code>` per line.
+### 1 - HTML code tags
+This does a "per-line" text replacement.
+Thus, for inline code, there must be only a single pair `<code></code>` per line.
+For code blocks, the `<pre>` and `</pre>` tags must be alone on their line.
 
 ### 2 - Gift special characters in answer blocs
-Another (present) limitation is that the gift-special characters `=` and `~` **cannot** be used in answer fields.
+Another (present) limitation is that the Gift-special characters `=` and `~` **cannot** be used in answer fields.
 For the latter, it is barely used in HTML/CSS code, but the first one is regularly used.
 
 This is because these 2 characters are used as "good/bad" answers designators.
@@ -80,8 +89,8 @@ Related: although the Gift specification does not require this, it is mandatory 
 
 ## Testing
 
-A sample question is included.
-To make sure to understand what it does, enter:
+A sample file holding a single question is included in repo.
+To make sure you understand what it does, enter:
 ```
 $ gift-for-html.sh sample1.src
 ```
