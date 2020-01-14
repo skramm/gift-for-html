@@ -98,7 +98,13 @@ While this one won't:
 ```
 { =good answer ~bad answer }
 ```
+
 **Warning**: The "answer feedback" part of the Gift specification  (identified by `#`) is not handled at present.
+
+### 3 - Other limitations
+
+"Multiple choice", "True-false", "Short answer" or "Missing word" questions will be correctly processed, but
+"Matching" and "Numerical" questions will fail (see Moodle/Gift reference).
 
 ## Testing
 

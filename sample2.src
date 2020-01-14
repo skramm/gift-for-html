@@ -15,3 +15,12 @@ What about~this: ? Is that ok?
 ~<false a="::" b="#" c="~" d="{">
 ~answer 3
 }
+
+::q3::
+this is a missing
+{
+=word
+=sentence
+~whatever
+}
+question: This is ok!
