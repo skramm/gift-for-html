@@ -10,8 +10,9 @@ Pull requests are welcome !
 
 Lots of academics now use the well-known [Moodle](https://en.wikipedia.org/wiki/Moodle) platform to set up quizzes for students.
 An easy way to do this is to import questions in some specific format, instead of editing this online.
-I use the ["Gift"](https://docs.moodle.org/38/en/GIFT_format)
-format.
+I use the ["Gift"](https://en.wikipedia.org/wiki/GIFT_(file_format)
+format
+([Current reference on moodle.org](https://docs.moodle.org/38/en/GIFT_format)).
 However, this file format has some pitfalls when building questions for web-related quizzes:
  * Source code can be formatted with the `<pre>` and `<code>` tags, but all the HTML tags will be understood at upload as "real" HTML, thus the tags will be removed.
  * The Gift format has some reserved characters: entering code such as<br>
@@ -61,12 +62,14 @@ All it does is some text replacement.
 To install (4 files), just clone the repo and run `sudo ./install.sh`.
 Should work out of the box on any standard Linux platform (requires Bash and Awk only).
 
-## Limitations
+## Features and limitations
 
 ### 1 - HTML code tags
 This does a "per-line" text replacement.
 Thus, for inline code, there must be only a single pair `<code></code>` per line.
 For code blocks, the `<pre>` and `</pre>` tags must be alone on their line.
+
+In the answer part of the question, HTML code can be given "as-is" and will be correctly escaped.
 
 ### 2 - Gift answer blocs
 
@@ -78,6 +81,7 @@ Thus, the following answer bloc will be correctly processed:
 {
 =some=good~answer
 ~some=bad~answer
+~<a nother="bad#">answer:</a>
 }
 ```
 and will produce this valid Gift answer bloc:
@@ -85,6 +89,7 @@ and will produce this valid Gift answer bloc:
 {
 =some\=good\~answer
 ~some\=bad\~answer
+~&lt;a nother\="bad\#"&gt;answer\:&lt;/a&gt;
 }
 ```
 While this one won't:

@@ -16,4 +16,5 @@ do this/that
 ~<a href="http://here.com#anchor">anchor</a>
 ~really { bad: answer;} but=or~
 ~some=bad~answer:but#this { is } ok
+~<a nother="bad#">answer:</a>
 }
