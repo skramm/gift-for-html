@@ -4,7 +4,7 @@ $CATEGORY:dummy
 ::q0::[html]
 This is a dummy question
 with <code>sel {some: css-code;}</code>
-and some <code><tag attrib1="html#anchor" attrib2="code"></tag></code>.
+and some HTML <code><tag attrib1="html#anchor" attrib2="code"></tag></code>.
 Code blocks:
 <pre>
 <a href="aa">text</a>
@@ -15,5 +15,5 @@ do this/that
 =<AA BB="CC#DD">EE</AA> this=is~part=of~the=answer
 ~<a href="http://here.com#anchor">anchor</a>
 ~really { bad: answer;} but=or~
-~another = one
+~some=bad~answer:but#this { is } ok
 }

@@ -91,7 +91,7 @@ While this one won't:
 ```
 { =good answer ~bad answer }
 ```
-**Warning**: The "answer feedback" part (identified by `#`) is not handled at present.
+**Warning**: The "answer feedback" part of the Gift specification  (identified by `#`) is not handled at present.
 
 ## Testing
 

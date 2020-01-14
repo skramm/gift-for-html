@@ -33,15 +33,15 @@
 				gsub("#","\\#");
 				gsub(":","\\:");
 # This part will process answer lines, that MUST start with '=' (good answer) or '~' (bad answer)
-				if( $0 ~ /^[=].+/ )  # If '=' is first char of line
+				if( $0 ~ /^[=].+/ )  # if '=' is first char of line
 				{
-					line=substr($0,2)
-					gsub( "=","\\=",line);
+					line=substr($0,2)      # fetch all but first char
+					gsub("=","\\=",line);  # replace
 					gsub("~","\\~",line);
 					print "=" line
 					printLine=0;
 				}
-				if( $0 ~ /^[~].+/ )  # If '~' is first char of line
+				if( $0 ~ /^[~].+/ )  # if '~' is first char of line
 				{
 					line=substr($0,2)
 					gsub( "=","\\=",line);
