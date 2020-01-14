@@ -24,23 +24,20 @@
 		else
 		{
 			printLine=1;
-			if( ablock==0 )      # if not an answer block, process `:`
+			if( ablock==0 )                  # if not an answer block, process `:`
 			{
-#				print "NOT ANSWER BLOC"
-
-				if( !($0 ~ /^[$].+/) )  # if '$' is NOT the first char of line
+				if( !($0 ~ /^[$].+/) )       # if '$' is NOT the first char of line
 				{
-					if( $0 !~ /[:]{2}/ )   # if line does NOT hold `::`
-					{                       # replace singles `:` by `\:`
-						if( $0 ~ /[:]/ ) # if line holds `:`
-							gsub(":","\\:");
+					if( $0 !~ /[:]{2}/ )     # if line does NOT hold `::`
+					{
+						if( $0 ~ /[:]/ )     # if line holds `:`
+							gsub(":","\\:"); # THEN replace singles `:` by `\:`
 					}
 				}
 				print $0;
 			}
 			else
 			{                         # if answer block, escape reserved characters
-#				print "ANSWER BLOC"
 				gsub(">","\\&gt;");
 				gsub("<","\\&lt;");
 				gsub("{","\\{");
@@ -48,7 +45,7 @@
 				gsub("#","\\#");
 				gsub(":","\\:");
 # This part will process answer lines, that MUST start with '=' (good answer) or '~' (bad answer)
-				if( $0 ~ /^[=].+/ )  # if '=' is first char of line
+				if( $0 ~ /^[=].+/ )        # if '=' is first char of line
 				{
 					line=substr($0,2)      # fetch all but first char
 					gsub("=","\\=",line);  # replace
@@ -56,7 +53,7 @@
 					print "=" line
 					printLine=0;
 				}
-				if( $0 ~ /^[~].+/ )  # if '~' is first char of line
+				if( $0 ~ /^[~].+/ )        # if '~' is first char of line
 				{
 					line=substr($0,2)
 					gsub( "=","\\=",line);
