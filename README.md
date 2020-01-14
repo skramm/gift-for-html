@@ -10,7 +10,7 @@ Pull requests are welcome !
 
 Lots of academics now use the well-known [Moodle](https://en.wikipedia.org/wiki/Moodle) platform to set up quizzes for students.
 An easy way to do this is to import questions in some specific format, instead of editing this online.
-I use the ["Gift"](https://en.wikipedia.org/wiki/GIFT_(file_format)
+I use the ["Gift"](https://en.wikipedia.org/wiki/GIFT_(file_format))
 format
 ([Current reference on moodle.org](https://docs.moodle.org/38/en/GIFT_format)).
 However, this file format has some pitfalls when building questions for web-related quizzes:
