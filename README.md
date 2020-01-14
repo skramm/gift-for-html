@@ -68,24 +68,30 @@ This does a "per-line" text replacement.
 Thus, for inline code, there must be only a single pair `<code></code>` per line.
 For code blocks, the `<pre>` and `</pre>` tags must be alone on their line.
 
-### 2 - Gift special characters in answer blocs
-Another (present) limitation is that the Gift-special characters `=` and `~` **cannot** be used in answer fields.
-For the latter, it is barely used in HTML/CSS code, but the first one is regularly used.
+### 2 - Gift answer blocs
 
-This is because these 2 characters are used as "good/bad" answers designators.
-
-Thus, if you expect as (good) answer this:
-```
-<tag attrib="value">
-```
-you will need to type this as "answer bloc":
+The characters `=` and `~` denoting good and bad answers in the answer part of the question MUST be the first character of the line.
+But subsequent `=` and `~` characters will be correctly escaped.
+It is also mandatory that the answer blocs identifiers (`{` and `}`) are the single characters of the line.
+Thus, the following answer bloc will be correctly processed:
 ```
 {
-=<tag attrib\="value">
+=some=good~answer
+~some=bad~answer
 }
 ```
-
-Related: although the Gift specification does not require this, it is mandatory that the answer blocs identifiers (`{` and `}`) are the single characters of the line.
+and will produce this valid Gift answer bloc:
+```
+{
+=some\=good\~answer
+~some\=bad\~answer
+}
+```
+While this one won't:
+```
+{ =good answer ~bad answer }
+```
+**Warning**: The "answer feedback" part (identified by `#`) is not handled at present.
 
 ## Testing
 

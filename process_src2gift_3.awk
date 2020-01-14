@@ -23,6 +23,7 @@
 		}
 		else
 		{                     # if answer block, escape reserved characters
+			printLine=1;
 			if( ablock==1 )
 			{
 				gsub(">","\\&gt;");
@@ -31,10 +32,26 @@
 				gsub("}","\\}");
 				gsub("#","\\#");
 				gsub(":","\\:");
-#				gsub("=","\\=");
-#				gsub("~","\\~");
+# This part will process answer lines, that MUST start with '=' (good answer) or '~' (bad answer)
+				if( $0 ~ /^[=].+/ )  # If '=' is first char of line
+				{
+					line=substr($0,2)
+					gsub( "=","\\=",line);
+					gsub("~","\\~",line);
+					print "=" line
+					printLine=0;
+				}
+				if( $0 ~ /^[~].+/ )  # If '~' is first char of line
+				{
+					line=substr($0,2)
+					gsub( "=","\\=",line);
+					gsub("~","\\~",line);
+					print "~" line
+					printLine=0;
+				}
 			}
-			print $0;
+			if( printLine )
+				print $0;
 		}
 	}
 }
