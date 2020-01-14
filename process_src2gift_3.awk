@@ -37,7 +37,7 @@
 				print $0;
 			}
 			else
-			{                         # if answer block, escape reserved characters
+			{                         # if answer block, escape reserved characters and HTML < and >
 				gsub(">","\\&gt;");
 				gsub("<","\\&lt;");
 				gsub("{","\\{");

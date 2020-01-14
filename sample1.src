@@ -8,7 +8,7 @@ and some HTML <code><tag attrib1="html#anchor" attrib2="code"></tag></code>.
 Code blocks:
 <pre>
 <a href="aa">text</a>
-sel {some: css-code;}
+sel {some: css-code;with: special~char;}
 </pre>
 do this/that
 {

@@ -104,11 +104,13 @@ While this one won't:
 ### 3 - Other limitations
 
 "Multiple choice", "True-false", "Short answer" or "Missing word" questions will be correctly processed, but
-"Matching" and "Numerical" questions will fail (see Moodle/Gift reference).
+"Matching" and "Numerical" questions will fail.
+"Multiple choice with multiple right answers" are not handled either.
+(see Moodle/Gift reference).
 
 ## Testing
 
-A sample file holding a single question is included in repo.
+Two samples files holding some sample questions are included in repo.
 To make sure you understand what it does, enter:
 ```
 $ gift-for-html.sh sample1.src
