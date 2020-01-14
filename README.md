@@ -98,6 +98,11 @@ While this one won't:
 ```
 **Warning**: The "answer feedback" part of the Gift specification  (identified by `#`) is not handled at present.
 
+### 3 - colon character
+
+At present, the `:` reserved character inside the question text is not handled, thus you have to escape it yourself.
+(WIP).
+
 ## Testing
 
 A sample file holding a single question is included in repo.
@@ -106,3 +111,13 @@ To make sure you understand what it does, enter:
 $ gift-for-html.sh sample1.src
 ```
 and checkout the produced file `sample1.gift`.
+
+## Related
+ * https://github.com/fuhrmanator/GIFT-grammar-PEG.js
+
+## How does this thing work ?
+
+The main script just calls 3 awk scripts:
+ * the first one processes all code blocs (`<pre>`,`</pre>` tags)
+ * the second one processes inline code (`<code>`,`</code>` tags)
+ * the third one processes the "expected answers" part of the question

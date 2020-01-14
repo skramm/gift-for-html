@@ -3,7 +3,7 @@
 # Home: https://github.com/skramm/gift-for-html
 
 
-# Step 2: replace inside code snippets delimited by <code>
+# Step 2: replace inside code snippets delimited by `<code>` and `</code>`
 # - all "<" by "&lt;"
 # - all ">" by "&gt;"
 # and escape reserved Moodle/gift characters
