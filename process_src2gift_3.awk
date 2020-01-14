@@ -3,7 +3,7 @@
 # Home: https://github.com/skramm/gift-for-html
 
 
-# Step 3 : replace inside gift answer blocks of code delimited by { and }
+# Step 3: replace inside gift answer blocks of code delimited by `{` and `}`
 # - all "<" by "&lt;"
 # - all ">" by "&gt;"
 # and escape reserved Moodle/gift characters
@@ -22,10 +22,22 @@
 			print $0;
 		}
 		else
-		{                     # if answer block, escape reserved characters
+		{
 			printLine=1;
-			if( ablock==1 )
+			if( ablock==0 )      # if not an answer block, process `:`
 			{
+				print "NOT ANSWER BLOC"
+				if( !($0 ~ /^[$].+/) )  # if '$' is NOT the first char of line
+				{                       # replace singles `:` by `\:`
+					gsub("::","*-a*-a*-a"); # highly unlikely pattern !
+					gsub(":","\\:")
+					gsub("*-a*-a*-a","::");
+				}
+				print $0;
+			}
+			else
+			{                         # if answer block, escape reserved characters
+#				print "ANSWER BLOC"
 				gsub(">","\\&gt;");
 				gsub("<","\\&lt;");
 				gsub("{","\\{");
@@ -49,9 +61,9 @@
 					print "~" line
 					printLine=0;
 				}
+				if( printLine )
+					print $0;
 			}
-			if( printLine )
-				print $0;
 		}
 	}
 }
