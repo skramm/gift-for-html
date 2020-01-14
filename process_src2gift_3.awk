@@ -1,11 +1,13 @@
-# process file:
-# 1-Replace inside blocks of code delimited by <code>
+# This file is part of: gift-for-html
+# Author: S. Kramm, 2020
+# Home: https://github.com/skramm/gift-for-html
+
+
+# Step 3 : replace inside gift answer blocks of code delimited by { and }
 # - all "<" by "&lt;"
 # - all ">" by "&gt;"
-# 2 - Escape reserved Moodle/gift characters
+# and escape reserved Moodle/gift characters
 
-
-#BEGIN { print "// THIS IS A GENERATED FILE, DO NOT EDIT !" }
 {
 	if( $1=="{" ) # opening an answer block
 	{
@@ -20,7 +22,7 @@
 			print $0;
 		}
 		else
-		{ # if answer block, escape {,},=
+		{                     # if answer block, escape reserved characters
 			if( ablock==1 )
 			{
 				gsub(">","\\&gt;");
@@ -28,7 +30,9 @@
 				gsub("{","\\{");
 				gsub("}","\\}");
 				gsub("#","\\#");
+				gsub(":","\\:");
 #				gsub("=","\\=");
+#				gsub("~","\\~");
 			}
 			print $0;
 		}
