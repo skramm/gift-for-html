@@ -1,8 +1,10 @@
 # gift-for-html
 
- * author: S. Kramm
- * home: https://github.com/skramm/gift-for-html
- * licence : GPL v3.0
+A Moodle/Gift format automatic formatter tool, useful for people authoring Web-related (HTML/CSS) Moodle quizzes.
+
+ * Author: S. Kramm
+ * Home: https://github.com/skramm/gift-for-html
+ * Licence : GPL v3.0
 
 Pull requests are welcome !
 
@@ -14,7 +16,7 @@ I use the ["Gift"](https://en.wikipedia.org/wiki/GIFT_(file_format))
 format
 ([Current reference on moodle.org](https://docs.moodle.org/38/en/GIFT_format)).
 However, this file format has some pitfalls when building questions for web-related quizzes:
- * Source code can be formatted with the `<pre>` and `<code>` tags, but all the HTML tags will be understood at upload as "real" HTML, thus the tags will be removed.
+ * Source code can be formatted with the `<pre>` and `<code>` tags, but all the HTML tags will be understood at upload as "real" HTML, thus the tags will be removed by the Moodle uploader.
  * The Gift format has some reserved characters: entering code such as<br>
 `body { color:gray; }`<br>
 won't work.
@@ -34,13 +36,13 @@ body { color:gray; }
 and this:
 ```
 <pre>
-&lt;a href\="p.html"&gt;text&lt;/a&gt;
+&lt;a href\="p.html\#z"&gt;text&lt;/a&gt;
 </pre>
 ```
 instead of this
 ```
 <pre>
-<a href="p.html">text</a>
+<a href="p.html#z">text</a>
 </pre>
 ```
 
@@ -98,11 +100,6 @@ While this one won't:
 ```
 **Warning**: The "answer feedback" part of the Gift specification  (identified by `#`) is not handled at present.
 
-### 3 - colon character
-
-At present, the `:` reserved character inside the question text is not handled, thus you have to escape it yourself.
-(WIP).
-
 ## Testing
 
 A sample file holding a single question is included in repo.
@@ -118,6 +115,6 @@ and checkout the produced file `sample1.gift`.
 ## How does this thing work ?
 
 The main script just calls 3 awk scripts:
- * the first one processes all code blocs (`<pre>`,`</pre>` tags)
+ * the first one processes all the lines inside code blocs (`<pre>`,`</pre>` tags)
  * the second one processes inline code (`<code>`,`</code>` tags)
  * the third one processes the "expected answers" part of the question

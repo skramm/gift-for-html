@@ -1,0 +1,17 @@
+$CATEGORY:dummy
+
+::q1::
+question text:
+{
+=answer 1
+~answer 2
+~answer 3:
+}
+
+::q2::
+What about~this: ? Is that ok?
+{
+=<true a=":" b="#" c="~">
+~<false a="::" b="#" c="~" d="{">
+~answer 3
+}

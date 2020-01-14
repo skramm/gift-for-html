@@ -26,12 +26,15 @@
 			printLine=1;
 			if( ablock==0 )      # if not an answer block, process `:`
 			{
-				print "NOT ANSWER BLOC"
+#				print "NOT ANSWER BLOC"
+
 				if( !($0 ~ /^[$].+/) )  # if '$' is NOT the first char of line
-				{                       # replace singles `:` by `\:`
-					gsub("::","*-a*-a*-a"); # highly unlikely pattern !
-					gsub(":","\\:")
-					gsub("*-a*-a*-a","::");
+				{
+					if( $0 !~ /[:]{2}/ )   # if line does NOT hold `::`
+					{                       # replace singles `:` by `\:`
+						if( $0 ~ /[:]/ ) # if line holds `:`
+							gsub(":","\\:");
+					}
 				}
 				print $0;
 			}
