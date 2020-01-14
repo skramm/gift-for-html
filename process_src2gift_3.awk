@@ -38,7 +38,7 @@
 			}
 			else
 			{                         # if answer block, escape reserved characters and HTML < and >
-				gsub(">","\\&gt;");
+#				gsub(">","\\&gt;");
 				gsub("<","\\&lt;");
 				gsub("{","\\{");
 				gsub("}","\\}");
@@ -50,14 +50,19 @@
 					line=substr($0,2)      # fetch all but first char
 					gsub("=","\\=",line);  # replace
 					gsub("~","\\~",line);
+
+					if( $line !~ /->/ )            # if line does not hold "match" answers
+						gsub(">","\\&gt;",line);   # then, replace
 					print "=" line
 					printLine=0;
 				}
 				if( $0 ~ /^[~].+/ )        # if '~' is first char of line
 				{
 					line=substr($0,2)
-					gsub( "=","\\=",line);
+					gsub("=","\\=",line);
 					gsub("~","\\~",line);
+					if( $line !~ /->/ )            # if line does not hold "match" answers
+						gsub(">","\\&gt;",line);   # then, replace
 					print "~" line
 					printLine=0;
 				}

@@ -103,10 +103,13 @@ While this one won't:
 
 ### 3 - Other limitations
 
-"Multiple choice", "True-false", "Short answer" or "Missing word" questions will be correctly processed, but
-"Matching" and "Numerical" questions will fail.
+"Multiple choice", "True-false", "Short answer", "Matching" and "Missing word" questions will be correctly processed, but
+"Numerical" questions will fail.
 "Multiple choice with multiple right answers" are not handled either.
 (see Moodle/Gift reference).
+
+For "Matching" answers, the script searches for the `->` string, and will not does the `>`=>`&gt;` replacement if so.
+The counterpart is that you can't have HTML tags on the answer line.
 
 ## Testing
 
@@ -116,6 +119,9 @@ To make sure you understand what it does, enter:
 $ gift-for-html.sh sample1.src
 ```
 and checkout the produced file `sample1.gift`.
+
+If you are interested in this code, some heavy testing would really be helpful.
+If you encounter some issue, please report it here.
 
 ## Related
  * https://github.com/fuhrmanator/GIFT-grammar-PEG.js
