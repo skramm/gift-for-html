@@ -56,15 +56,20 @@
 					print "=" line
 					printLine=0;
 				}
-				if( $0 ~ /^[~].+/ )        # if '~' is first char of line
+				else
 				{
-					line=substr($0,2)
-					gsub("=","\\=",line);
-					gsub("~","\\~",line);
-					if( $line !~ /->/ )            # if line does not hold "match" answers
-						gsub(">","\\&gt;",line);   # then, replace
-					print "~" line
-					printLine=0;
+					if( $0 ~ /^[~].+/ )        # if '~' is first char of line
+					{
+						line=substr($0,2)
+						gsub("=","\\=",line);
+						gsub("~","\\~",line);
+						if( $line !~ /->/ )            # if line does not hold "match" answers
+							gsub(">","\\&gt;",line);   # then, replace
+						print "~" line
+						printLine=0;
+					}
+					else
+						gsub(">","\\&gt;");
 				}
 				if( printLine )
 					print $0;
