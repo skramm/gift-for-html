@@ -33,21 +33,23 @@ instead of:
 body { color:gray; }
 </pre>
 ```
-and this:
-```
-<pre>
-&lt;a href\="p.html\#z"&gt;text&lt;/a&gt;
-</pre>
-```
-instead of this
+While this might sound not too hard, it can become much more cumbersome.
+Say you need to insert this code in your question:
 ```
 <pre>
 <a href="p.html#z">text</a>
 </pre>
 ```
+Then you would need to enter this:
+```
+<pre>
+&lt;a href\="p.html\#z"&gt;text&lt;/a&gt;
+</pre>
+```
 
-This is pretty much a PITA, thus this script:
-just type your questions as regular Gift questions, holding standard HTML/CSS code inside `<pre>` and `<code>` tags, this script will process it for you and generate a conformant Gift file.
+This is pretty much a [PITA](https://en.wiktionary.org/wiki/PITA), thus this script:
+just type your questions in a file, as regular Gift questions, holding standard HTML/CSS code inside `<pre>` and `<code>` tags.
+This script will process it for you and generate a conformant Gift file that you can directly upload into a Moodle instance.
 
 ## Usage
 This program will take as input a text file (.src extension, but this can be changed)
@@ -108,8 +110,24 @@ While this one won't:
 "Multiple choice with multiple right answers" are not handled either.
 (see Moodle/Gift reference).
 
-For "Matching" answers, the script searches for the `->` string, and will not does the `>`=>`&gt;` replacement if so.
+For "Matching" answers, the script searches for the `->` string, and will not do the `>`=>`&gt;` replacement if so.
 The counterpart is that you can't have HTML tags on the answer line.
+
+For example, this answer bloc will not be processed correctly:
+```
+{
+=A -> <p>B</p>
+=C -> D
+}
+```
+But this will be fine (and ends up as the same):
+```
+{
+=A ->
+<p>B</p>
+=C -> D
+}
+```
 
 ## Testing
 

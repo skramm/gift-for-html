@@ -28,13 +28,14 @@ question: This is ok!
 "Matching" question:
 Match the following countries with their corresponding capitals.
 {
-   =Canada -> <p>Ottawa</p>
-   =Italy  -> Rome
-   =Japan  -> Tokyo
-   =India  -> New Delhi
+=Canada ->
+<p>Ottawa</p>
+=Italy  -> Rome
+=Japan  -> Tokyo
+=India  -> New Delhi
 }
 
-comment:
+HTML comment: this will fail !
 {
 =<!--comment-->
 }
