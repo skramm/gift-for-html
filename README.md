@@ -24,7 +24,7 @@ won't work.
 Thus, when authoring questions, you would be required to write this:
 ```
 <pre>
-body \{ color:gray; \}
+body \{ color\:gray; \}
 </pre>
 ```
 instead of:
@@ -67,6 +67,7 @@ To install (4 files), just clone the repo and run `sudo ./install.sh`.
 Should work out of the box on any standard Linux platform (requires Bash and Awk only).
 
 ## Features and limitations
+
 
 ### 1 - HTML code tags
 This does a "per-line" text replacement.
