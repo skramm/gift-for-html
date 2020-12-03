@@ -71,14 +71,13 @@ Should work out of the box on any standard Linux platform (requires Bash and Awk
 
 ### 1 - HTML code tags
 This does a "per-line" text replacement.
-Thus, for inline code, there must be only a single pair `<code></code>` per line.
+Thus, for inline code, there must be only a **single pair** `<code></code>` per line.
 For code blocks, the `<pre>` and `</pre>` tags must be alone on their line.
 
 In the answer part of the question, HTML code can be given "as-is" and will be correctly escaped.
 
 ### 2 - Gift answer blocs
-
-The characters `=` and `~` denoting good and bad answers in the answer part of the question MUST be the first character of the line.
+The characters `=` and `~` denoting good and bad answers in the answer part of the question **must** be the first character of the line.
 But subsequent `=` and `~` characters will be correctly escaped.
 It is also mandatory that the answer blocs identifiers (`{` and `}`) are the single characters of the line.
 Thus, the following answer bloc will be correctly processed:
@@ -147,7 +146,7 @@ If you encounter some issue, please report it here.
 
 ## How does this thing work ?
 
-The main script just calls 3 awk scripts:
+The main bash script just calls 3 awk scripts:
  * the first one processes all the lines inside code blocs (`<pre>`,`</pre>` tags)
  * the second one processes inline code (`<code>`,`</code>` tags)
  * the third one processes the "expected answers" part of the question

@@ -14,7 +14,7 @@ LOCATION=/usr/local/bin
 if [ "$1" = "" ]
 then
 	echo "No input file given, exit !"
-	exit
+	exit -1
 fi
 
 # https://stackoverflow.com/a/965069/193789
@@ -22,20 +22,31 @@ filename=$(basename -- "$1")
 extension="${filename##*.}"
 filename="${filename%.*}"
 
-if [ "$extension" != "$SOURCE_EXT" ]
-then
+if [ "$extension" != "$SOURCE_EXT" ]; then
 	echo "Wrong input file, please give me a \".$SOURCE_EXT\" file, exit !"
-	exit
+	exit -1
 fi
 
 echo " -Step 1"
-awk -f $LOCATION/process_src2gift_1.awk $1 >/tmp/$filename.tmp1
+awk -f $LOCATION/process_src2gift_1.awk "$1" >"/tmp/$filename.tmp1"
+if [ $? != 0 ]; then
+	echo "Error: awk failure at step 1"
+	exit 1
+fi
 
 echo " -Step 2"
-awk -f $LOCATION/process_src2gift_2.awk /tmp/$filename.tmp1 >/tmp/$filename.tmp2
+awk -f $LOCATION/process_src2gift_2.awk "/tmp/$filename.tmp1" >"/tmp/$filename.tmp2"
+if [ $? != 0 ]; then
+	echo "Error: awk failure at step 1"
+	exit 2
+fi
 
 echo " -Step 3"
-awk -f $LOCATION/process_src2gift_3.awk /tmp/$filename.tmp2 >$filename.gift
+awk -f $LOCATION/process_src2gift_3.awk "/tmp/$filename.tmp2" >"$filename.gift"
+if [ $? != 0 ]; then
+	echo "Error: awk failure at step 1"
+	exit 3
+fi
 
 #rm /tmp/$filename.tmp
 
