@@ -10,20 +10,18 @@
 
 # FS: Field Separator
 # We define here as FS a regex that will match both <code> and </code>
+
 BEGIN {	FS="[<][/]?[c][o][d][e][>]"; }
 {
 	gsub(">","\\&gt;",$2);
 	gsub("<","\\&lt;",$2);
-	if( NF >= 3 )        # only if we have exactly 3 fields
+
+	print "NR=" NR " NF_A=" NF " line=" $0
+	if( NF == 2 )
 	{
-		gsub("{","\\{",$2); # escape {, }, =, #, ~
-		gsub("}","\\}",$2);
-		gsub("=","\\=",$2);
-		gsub("#","\\#",$2);
-#		gsub(":","\\:",$2);  # colon is processed in step 3
-		gsub("~","\\~",$2);
-		print $1 "<code>" $2 "</code>" $3
+		print "NF_B=" NF " arg1=*" $1 "* arg2=*" $2 "*"
+		print "line:" $0 > "/dev/stderr"
+#		exit 1
 	}
-	else
-		print $0
+
 }
