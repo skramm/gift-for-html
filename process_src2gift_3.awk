@@ -21,12 +21,12 @@
 			ablock=0;
 			print $0;
 		}
-		else
+		else            # not closing or opening an answer block
 		{
 			printLine=1;
 			if( ablock==0 )                  # if not an answer block, process `:`
 			{
-				if( !($0 ~ /^[$].+/) )       # if '$' is NOT the first char of line
+				if( !($0 ~ /^[$].+/) )       # if '$' is NOT the first char of line ("category")
 				{
 					if( $0 !~ /[:]{2}/ )     # if line does NOT hold `::`
 					{
@@ -39,7 +39,7 @@
 			else
 			{                         # if answer block, escape reserved characters and HTML < and >
 #				gsub(">","\\&gt;");
-				gsub("<","\\&lt;");
+#				gsub("<","\\&lt;");
 				gsub("{","\\{");
 				gsub("}","\\}");
 				gsub("#","\\#");
@@ -51,8 +51,8 @@
 					gsub("=","\\=",line);  # replace
 					gsub("~","\\~",line);
 
-					if( $line !~ /->/ )            # if line does not hold "match" answers
-						gsub(">","\\&gt;",line);   # then, replace
+#					if( $line !~ /->/ )            # if line does not hold "match" answers
+#						gsub(">","\\&gt;",line);   # then, replace
 					print "=" line
 					printLine=0;
 				}
@@ -63,13 +63,13 @@
 						line=substr($0,2)
 						gsub("=","\\=",line);
 						gsub("~","\\~",line);
-						if( $line !~ /->/ )            # if line does not hold "match" answers
-							gsub(">","\\&gt;",line);   # then, replace
+#						if( $line !~ /->/ )            # if line does not hold "match" answers
+#							gsub(">","\\&gt;",line);   # then, replace
 						print "~" line
 						printLine=0;
 					}
-					else
-						gsub(">","\\&gt;");
+#					else
+#						gsub(">","\\&gt;");
 				}
 				if( printLine )
 					print $0;

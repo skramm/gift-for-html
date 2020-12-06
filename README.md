@@ -103,7 +103,7 @@ and will produce this valid Gift answer bloc:
 {
 =some\=good\~answer
 ~some\=bad\~answer
-~&lt;a nother\="bad\#"&gt;answer\:&lt;/a&gt;
+~<a nother\="bad\#">answer\:</a>
 }
 ```
 While this one won't:
