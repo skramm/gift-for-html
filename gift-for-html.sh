@@ -45,14 +45,14 @@ fi
 echo " -Step 2"
 awk -f $LOCATION/process_src2gift_2.awk "/tmp/$filename.tmp1" >"/tmp/$filename.tmp2"
 if [ $? != 0 ]; then
-	echo "Error: awk failure at step 1"
+	echo "Error: awk failure at step 2"
 	exit 2
 fi
 
 echo " -Step 3"
 awk -f $LOCATION/process_src2gift_3.awk "/tmp/$filename.tmp2" >"$filename.gift"
 if [ $? != 0 ]; then
-	echo "Error: awk failure at step 1"
+	echo "Error: awk failure at step 3"
 	exit 3
 fi
 
