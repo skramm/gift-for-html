@@ -39,7 +39,7 @@
 			else
 			{                         # if answer block, escape reserved characters and HTML < and >
 #				gsub(">","\\&gt;");
-				gsub("<","\\&lt;");
+#				gsub("<","\\&lt;");
 				gsub("{","\\{");
 				gsub("}","\\}");
 				gsub("#","\\#");
