@@ -72,7 +72,17 @@ Should work out of the box on any standard Linux platform (requires Bash and Awk
 ### 1 - HTML code tags
 This does a "per-line" text replacement.
 Thus, for inline code, there must be only a **single pair** `<code></code>` per line.
-For code blocks, the `<pre>` and `</pre>` tags must be alone on their line.
+For example, this question text will not be processed correctly:
+```
+What tag can be inside <code><h2></code> and <code></h2></code>.
+```
+You need to add a linebreak:
+```
+What tag can be inside <code><h2></code>
+and <code></h2></code>.
+```
+
+For code blocks, the `<pre>` and `</pre>` tags must be **alone** on their line.
 
 In the answer part of the question, HTML code can be given "as-is" and will be correctly escaped.
 
