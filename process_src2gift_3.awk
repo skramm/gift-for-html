@@ -4,8 +4,6 @@
 
 
 # Step 3: replace inside gift answer blocks of code delimited by `{` and `}`
-# - all "<" by "&lt;"
-# - all ">" by "&gt;"
 # and escape reserved Moodle/gift characters
 
 {
@@ -26,7 +24,7 @@
 			printLine=1;
 			if( ablock==0 )                  # if not an answer block, process `:`
 			{
-				if( !($0 ~ /^[$].+/) )       # if '$' is NOT the first char of line ("category")
+				if( !($0 ~ /^[$].+/) )       # if '$' is NOT the first char of line ("category" line)
 				{
 					if( $0 !~ /[:]{2}/ )     # if line does NOT hold `::`
 					{
@@ -38,8 +36,6 @@
 			}
 			else
 			{                         # if answer block, escape reserved characters and HTML < and >
-#				gsub(">","\\&gt;");
-#				gsub("<","\\&lt;");
 				gsub("{","\\{");
 				gsub("}","\\}");
 				gsub("#","\\#");
@@ -50,9 +46,6 @@
 					line=substr($0,2)      # fetch all but first char
 					gsub("=","\\=",line);  # replace
 					gsub("~","\\~",line);
-
-#					if( $line !~ /->/ )            # if line does not hold "match" answers
-#						gsub(">","\\&gt;",line);   # then, replace
 					print "=" line
 					printLine=0;
 				}
@@ -63,13 +56,9 @@
 						line=substr($0,2)
 						gsub("=","\\=",line);
 						gsub("~","\\~",line);
-#						if( $line !~ /->/ )            # if line does not hold "match" answers
-#							gsub(">","\\&gt;",line);   # then, replace
 						print "~" line
 						printLine=0;
 					}
-#					else
-#						gsub(">","\\&gt;");
 				}
 				if( printLine )
 					print $0;

@@ -120,29 +120,10 @@ While this one won't:
 "Multiple choice with multiple right answers" are not handled either.
 (see Moodle/Gift reference).
 
-For "Matching" answers, the script searches for the `->` string, and will not do the `>`=>`&gt;` replacement if so.
-The counterpart is that you can't have HTML tags on the answer line.
-
-For example, this answer bloc will not be processed correctly:
-```
-{
-=A -> <p>B</p>
-=C -> D
-}
-```
-But this will be fine (and ends up as the same):
-```
-{
-=A ->
-<p>B</p>
-=C -> D
-}
-```
-
 ## Testing
 
 Two samples files holding some sample questions are included in repo.
-To make sure you understand what it does, enter:
+To make sure you understand what this does, enter:
 ```
 $ gift-for-html.sh sample1.src
 ```
