@@ -12,9 +12,9 @@ sel {some: css-code;with: special~char;}
 </pre>
 do this/that
 {
-=<AA BB="CC#DD">EE</AA> this=is~part=of~the=answer
+=<code><AA BB="CC#DD">EE</AA> this=is~part=of~the=answer</code>
 ~<a href="http://here.com#anchor">anchor</a>
-~really { bad: answer;} but=or~
+~<code>really { bad: answer;} but=or~</code>
 ~some=bad~answer:but#this { is } ok
 ~<a nother="bad#">answer:</a>
 }

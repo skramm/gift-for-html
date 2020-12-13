@@ -31,12 +31,12 @@ BEGIN { print "// THIS IS A GENERATED FILE, DO NOT EDIT !" }
 			{
 				gsub(">","\\&gt;");
 				gsub("<","\\&lt;");
-				gsub("{","\\{");
-				gsub("}","\\}");
-				gsub("=","\\=");
-				gsub("#","\\#");
+#				gsub("{","\\{");
+#				gsub("}","\\}");
+#				gsub("=","\\=");
+#				gsub("#","\\#");
 #				gsub(":","\\:"); # colon is processed in step 3
-				gsub("~","\\~");
+#				gsub("~","\\~");
 			}
 			print $0;
 		}

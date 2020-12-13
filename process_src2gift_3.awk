@@ -11,6 +11,7 @@
 	{
 		ablock=1;
 		print $0;
+#		print "ANSWER BLOCK OPEN"
 	}
 	else
 	{
@@ -18,24 +19,32 @@
 		{
 			ablock=0;
 			print $0;
+#			print "ANSWER BLOCK CLOSE"
 		}
-		else            # not closing or opening an answer block
+		else            # not closing nor opening an answer block
 		{
 			printLine=1;
 			if( ablock==0 )                  # if not an answer block, process `:`
 			{
+#				print "NOT ANSWER BLOCK"
 				if( !($0 ~ /^[$].+/) )       # if '$' is NOT the first char of line ("category" line)
 				{
 					if( $0 !~ /[:]{2}/ )     # if line does NOT hold `::`
 					{
-						if( $0 ~ /[:]/ )     # if line holds `:`
+#						if( $0 ~ /[:]/ )     # if line holds `:`
+						{
 							gsub(":","\\:"); # THEN replace singles `:` by `\:`
+							gsub("{","\\{");
+							gsub("}","\\}");
+							gsub("#","\\#");
+						}
 					}
 				}
 				print $0;
 			}
 			else
-			{                         # if answer block, escape reserved characters and HTML < and >
+			{                         # if answer block, escape reserved characters
+#				print "ANSWER BLOCK"
 				gsub("{","\\{");
 				gsub("}","\\}");
 				gsub("#","\\#");

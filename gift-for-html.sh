@@ -27,13 +27,13 @@ if [ "$extension" != "$SOURCE_EXT" ]; then
 	exit -1
 fi
 
-echo " -Step 0"
-awk -f process_src2gift_0.awk "$1"
-if [ $? != 0 ]; then
-	echo "Error: awk failure at step 0"
-	exit 1
-fi
-exit 0
+#echo " -Step 0"
+#awk -f process_src2gift_0.awk "$1"
+#if [ $? != 0 ]; then
+#	echo "Error: awk failure at step 0"
+#	exit 1
+#fi
+#exit 0
 
 echo " -Step 1"
 awk -f $LOCATION/process_src2gift_1.awk "$1" >"/tmp/$filename.tmp1"
