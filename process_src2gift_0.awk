@@ -6,7 +6,6 @@
 # Step 2: replace inside code snippets delimited by `<code>` and `</code>`
 # - all "<" by "&lt;"
 # - all ">" by "&gt;"
-# and escape reserved Moodle/gift characters
 
 # FS: Field Separator
 # We define here as FS a regex that will match both <code> and </code>

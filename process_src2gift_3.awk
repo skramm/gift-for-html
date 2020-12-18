@@ -24,19 +24,20 @@
 		else            # not closing nor opening an answer block
 		{
 			printLine=1;
-			if( ablock==0 )                  # if not an answer block, process `:`
+			if( ablock==0 )                  # if not an answer block, process all `:`
 			{
 #				print "NOT ANSWER BLOCK"
 				if( !($0 ~ /^[$].+/) )       # if '$' is NOT the first char of line ("category" line)
 				{
-					if( $0 !~ /[:]{2}/ )     # if line does NOT hold `::`
+					if( $0 !~ /[:]{2}/ )     # if line does NOT hold `::` (question title)
 					{
-#						if( $0 ~ /[:]/ )     # if line holds `:`
 						{
-							gsub(":","\\:"); # THEN replace singles `:` by `\:`
+							gsub(":","\\:"); # THEN escape reserved characters
 							gsub("{","\\{");
 							gsub("}","\\}");
 							gsub("#","\\#");
+							gsub("=","\\=");
+							gsub("~","\\~");
 						}
 					}
 				}

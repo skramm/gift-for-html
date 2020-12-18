@@ -2,7 +2,7 @@
 $CATEGORY:dummy
 
 ::q0::[html]
-This is a dummy question
+This is a dummy~question
 with <code>sel {some: css-code;}</code>
 and some HTML <code><tag attrib1="html#anchor" attrib2="code"></tag></code>.
 Code blocks:

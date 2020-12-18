@@ -34,11 +34,9 @@ body { color:gray; }
 </pre>
 ```
 While this might sound not too hard, it can become much more cumbersome.
-Say you need to insert this code in your question:
+Say you need to insert this code in your question (so that it appears as such!):
 ```
-<pre>
 <a href="p.html#z">text</a>
-</pre>
 ```
 Then you would need to enter this:
 ```
@@ -84,7 +82,9 @@ and <code></h2></code>.
 
 For code blocks, the `<pre>` and `</pre>` tags must be **alone** on their line.
 
-In the answer part of the question, HTML code can be given "as-is" and will be correctly escaped.
+In the answer part of the question, HTML code must also be inserted
+into a `<code></code>` (that must be alone on its line).
+
 
 ### 2 - Gift answer blocs
 The characters `=` and `~` denoting good and bad answers in the answer part of the question **must** be the first character of the line.
@@ -95,7 +95,7 @@ Thus, the following answer bloc will be correctly processed:
 {
 =some=good~answer
 ~some=bad~answer
-~<a nother="bad#">answer:</a>
+~<code><a nother="b~a~d#">ans~wer:</a></code>
 }
 ```
 and will produce this valid Gift answer bloc:
@@ -103,7 +103,7 @@ and will produce this valid Gift answer bloc:
 {
 =some\=good\~answer
 ~some\=bad\~answer
-~<a nother\="bad\#">answer\:</a>
+~<code><a nother="b~a~d#">ans~wer:</a></code>
 }
 ```
 While this one won't:
@@ -111,7 +111,7 @@ While this one won't:
 { =good answer ~bad answer }
 ```
 
-**Warning**: The "answer feedback" part of the Gift specification  (identified by `#`) is not handled at present.
+**Warning**: The "answer feedback" part of the Gift specification (identified by `#`) is not handled at present.
 
 ### 3 - Other limitations
 
@@ -122,22 +122,26 @@ While this one won't:
 
 ## Testing
 
-Two samples files holding some sample questions are included in repo.
+Some samples files holding some sample questions are included in repo.
 To make sure you understand what this does, enter:
 ```
-$ gift-for-html.sh sample1.src
+$ gift-for-html.sh sampleX.src
 ```
-and checkout the produced file `sample1.gift`.
+and checkout the produced file `sampleX.gift`.
 
 If you are interested in this code, some heavy testing would really be helpful.
 If you encounter some issue, please report it here.
 
-## Related
+## Related (?)
  * https://github.com/fuhrmanator/GIFT-grammar-PEG.js
 
 ## How does this thing work ?
 
-The main bash script just calls 3 awk scripts:
+The main bash script just calls 3 awk scripts, that do some regex-based string replacements:
  * the first one processes all the lines inside code blocs (`<pre>`,`</pre>` tags)
  * the second one processes inline code (`<code>`,`</code>` tags)
- * the third one processes the "expected answers" part of the question
+ * the third one processes all the reserved characters.
+
+**Side note**: while angle bracket are indeed not a problem for the Gift file format, they are for Moodle, as the uploader will either remove them, either not (unclear at this point).
+But if not removed, then they will not be rendered, as the browser will interpret them as "regular" HTML code.
+So it is mandatory to escape HTML code into a `<code>`-`</code>` tag pair.
