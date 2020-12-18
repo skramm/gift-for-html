@@ -1,0 +1,34 @@
+$CATEGORY:dummy
+
+::q1::
+question text:
+{
+=A -> <p>B</p>
+=C -> D
+}
+
+
+::q2::
+question text:
+{
+=A ->
+<b>B</b>
+=C -> D
+}
+
+
+
+
+::q3::
+question text:
+{
+=answer 1
+~answer 2
+~answer 3:
+}
+
+::q4::
+HTML comment: this will fail !
+{
+=<!--comment-->
+}

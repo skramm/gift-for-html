@@ -1,0 +1,15 @@
+$CATEGORY:dummy
+
+::q1::
+question text:
+{
+=p { color:red;}
+~h1 { color:red;}
+}
+
+question
+{
+=some=good~answer
+~some=bad~answer
+~<code><a nother="b~a~d#">ans~wer:</a></code>
+}
